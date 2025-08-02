@@ -59,3 +59,5 @@ class APIClient:
             df = df.dropna(subset=['date'])
 
         return df.to_dict(orient='records')
+        
+        

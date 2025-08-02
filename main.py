@@ -123,8 +123,15 @@ class CLIManager:
             results = self.db_handler.query_data(sql_query, (args.country,))
             headers = ["Date", args.metric.replace('_', ' ').title()]
             if results:
-                print(f"\nDaily {args.metric.replace('_', ' ').title()} Trends for {args.country}:")
-                print(tabulate(results, headers=headers, tablefmt="grid"))
+                print(f"\nDaily {args.metric.replace('_',' ').title()} Trends for {args.country}:")
+                # Convert list of dicts into list of lists matching headers
+                rows = []
+                for r in results:
+                    # Ensure the expected keys exist
+                    date = r.get('report_date')
+                    metric_value = r.get(args.metric)
+                    rows.append([date, metric_value])
+                print(tabulate(rows, headers=["Date", args.metric.replace('_', ' ').title()], tablefmt="grid"))
             else:
                 print(f"No daily trends found for {args.country} for metric {args.metric}.")
 

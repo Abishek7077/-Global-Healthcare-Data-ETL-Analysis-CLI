@@ -92,4 +92,9 @@ class DataTransformer:
         df = df[final_cols]
         logging.info(f"Transformation complete. {len(df)} records ready for loading.")
         return df
-
+        
+        
+    
+    
+    
+    

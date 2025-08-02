@@ -18,8 +18,7 @@ class MySQLHandler:
         try:
             self.conn = mysql.connector.connect(**self.db_config)
             if self.conn.is_connected():
-                db_info = self.conn.get_server_info()
-                logging.info(f"Connected to MySQL database. Server version: {db_info}")
+                logging.info(f"Connected to MySQL database")
                 return True
         except Error as e:
             logging.error(f"Error connecting to MySQL database: {e}")
