@@ -17,16 +17,16 @@ Modular and Extensible Design: Codebase is clearly separated into modules (API c
 
 # Installation and Setup (Except Cloning)
 
-Install Python Dependencies
+### Install Python Dependencies
 Ensure you have Python 3.7 or higher installed. Install the required Python packages using:
 
-text
+### text
 pip install -r requirements.txt
 Install and Configure MySQL
 Make sure you have MySQL Server 5.7 or higher installed and running on your machine.
 Then, create a new database for the project (you can name it as you like, e.g., covid_healthcare):
 
-sql
+### sql
 CREATE DATABASE covid_healthcare;
 Configure Database Connection
 Edit the config.ini file in your project root to add your MySQL connection credentials and database name:
@@ -45,7 +45,7 @@ mysql -u your_mysql_username -p covid_healthcare < sql/create_tables.sql
 Ready to Use
 The project is now set up to fetch, load, and analyze COVID-19 data through CLI commands
 
-Public API and Data Details
+## Public API and Data Details
 Data Source: Our World in Data (OWID) COVID-19 dataset CSV
 
 API Link: https://github.com/owid/covid-19-data/raw/master/public/data/owid-covid-data.csv
@@ -56,7 +56,7 @@ Update Frequency: Typically updated daily
 
 Add image: API data flow or snippet from dataset
 
-project structure
+### project structure
 
 main.py: CLI entry point
 api_client.py: Extracts data
@@ -67,7 +67,7 @@ sql/create_tables.sql: Table schemas
 requirements.txt, README.md, docs/
 
 
-Database Schema Description
+# Database Schema Description
 Table: daily_cases
 Columns: id (PK), report_date, country_name, total_cases, new_cases, total_deaths, new_deaths, etl_timestamp
 
@@ -78,7 +78,7 @@ Columns: id (PK), report_date, country_name, total_vaccinations, people_vaccinat
 
 ![vaccination_case](images/vaccination.png)
 
-ETL Process Description
+## ETL Process Description
 Extract: Downloads the global COVID-19 CSV dataset from OWID’s API
 
 Transform: Filters by country and date, cleans data (handles missing, converts types), normalizes formats
@@ -89,31 +89,37 @@ Analytics: Enables querying trends and summaries via CLI commands
 
 ![ETL](images/how-etl-pipeline-works.png)
 
-CLI Command Usage Guide
-Fetch and load data:
+# CLI Command Usage Guide
+#### Fetch and load data:
 
-text
 python main.py fetch_data --country "Country_Name" --start_date YYYY-MM-DD --end_date YYYY-MM-DD --data_type [cases|vaccinations|all]
-Query total cases:
 
-text
+
+#### Query total cases:
+
 python main.py query_data total_cases --country "Country_Name"
-Fetch daily trends:
 
-text
+
+#### Fetch daily trends:
+
 python main.py query_data daily_trends --country "Country_Name" --metric "new_cases"
-Get top N countries by metric:
 
-text
+
+#### Get top N countries by metric:
+
 python main.py query_data top_n_countries_by_metric --n N --metric "total_vaccinations"
-List tables in database:
 
-text
+
+#### List tables in database:
+
 python main.py list_tables
-Drop all tables:
 
-text
+
+#### Drop all tables:
+
 python main.py drop_tables
+
+#### Images
 
 
 
