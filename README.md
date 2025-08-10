@@ -66,12 +66,12 @@ Database Schema Description
 Table: daily_cases
 Columns: id (PK), report_date, country_name, total_cases, new_cases, total_deaths, new_deaths, etl_timestamp
 
-![Daily case](images\Daily_cases.png)
+![Daily case](images/Daily_cases.png)
 
 Table: vaccination_data
 Columns: id (PK), report_date, country_name, total_vaccinations, people_vaccinated, people_fully_vaccinated, etl_timestamp
 
-![vaccination_case](images\vaccination.png)
+![vaccination_case](images/vaccination.png)
 
 ETL Process Description
 Extract: Downloads the global COVID-19 CSV dataset from OWID’s API
@@ -82,7 +82,7 @@ Load: Inserts cleaned data into MySQL tables with duplicate prevention
 
 Analytics: Enables querying trends and summaries via CLI commands
 
-![ETL](images\how-etl-pipeline-works.png)
+![ETL](images/how-etl-pipeline-works.png)
 
 CLI Command Usage Guide
 Fetch and load data:
