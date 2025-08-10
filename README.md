@@ -1,9 +1,9 @@
-#Project Overview
+# Project Overview
 
 This project offers a robust Python command-line tool for analyzing healthcare data statistics using automated ETL (Extract, Transform, Load) processes. By directly integrating with a public API, you can effortlessly collect, clean, and load up-to-date COVID-19 case and vaccination data into a persistent MySQL database. The CLI enables users to query, track, and visualize healthcare trends across countries with reproducible commands, supporting effective research and reporting.
 
 
-#KEY FEATURES
+# KEY FEATURES
 
 Automated Data Retrieval: Automatically fetches up-to-date global COVID-19 case and vaccination data from the public Our World in Data (OWID) CSV API.
 
@@ -15,7 +15,7 @@ Command-Line Interface: Provides a flexible CLI for users to fetch data, execute
 
 Modular and Extensible Design: Codebase is clearly separated into modules (API client, transformer, DB handler, CLI) for maintainability and future scalabili
 
-#Installation and Setup (Except Cloning)
+# Installation and Setup (Except Cloning)
 
 Install Python Dependencies
 Ensure you have Python 3.7 or higher installed. Install the required Python packages using:
