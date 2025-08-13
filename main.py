@@ -2,7 +2,7 @@ import argparse
 import logging
 import configparser
 from datetime import datetime, timedelta
-from tabulate import tabulate # For pretty printing tables
+from tabulate import tabulate 
 
 from api_client import APIClient
 from data_transformer import DataTransformer
@@ -142,8 +142,7 @@ class CLIManager:
 
             table_name = 'daily_cases' if args.metric in ['total_cases', 'total_deaths'] else 'vaccination_data'
             
-            # For total_cases/deaths, we need the latest cumulative value per country
-            # For total_vaccinations, we need the latest cumulative value per country
+            
             sql_query = f"""
             SELECT country_name, MAX({args.metric}) AS latest_metric_value
             FROM {table_name}
@@ -185,7 +184,7 @@ class CLIManager:
             print("Table dropping cancelled.")
 
 def main():
-    # Load database and API configuration
+
     config = configparser.ConfigParser()
     try:
         config.read('config.ini')

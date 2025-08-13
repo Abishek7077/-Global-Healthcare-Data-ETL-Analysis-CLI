@@ -34,7 +34,7 @@ class MySQLHandler:
             cursor = self.conn.cursor()
             with open('sql/create_tables.sql', 'r') as f:
                 sql_script = f.read()
-            # Split by semicolon to execute multiple statements
+        
             for statement in sql_script.split(';'):
                 if statement.strip():
                     cursor.execute(statement)
@@ -52,7 +52,7 @@ class MySQLHandler:
     def insert_data(self, table_name, data_list):
         """
         Inserts a list of dictionaries/records into a specified table.
-        Handles incremental loads by checking for existing records.
+        
         """
         if not self.conn or not self.conn.is_connected():
             logging.error("Database connection not established. Cannot insert data.")
@@ -66,17 +66,17 @@ class MySQLHandler:
         inserted_count = 0
 
         try:
-            # Assuming 'report_date' and 'country_name' are part of the unique key
+            
             select_sql = f"SELECT report_date, country_name FROM {table_name} WHERE report_date = %s AND country_name = %s"
 
-            # Prepare insert statement dynamically based on the first record's keys
+        
             columns = data_list[0].keys()
             placeholders = ', '.join(['%s'] * len(columns))
             insert_sql = f"INSERT INTO {table_name} ({', '.join(columns)}) VALUES ({placeholders})"
 
             new_records = []
             for record in data_list:
-                # Check if record already exists
+                
                 cursor.execute(select_sql, (record['report_date'], record['country_name']))
                 if not cursor.fetchone():
                     new_records.append(tuple(record.values()))
@@ -102,9 +102,9 @@ class MySQLHandler:
     def query_data(self, sql_query, params=None):
         """Executes a SELECT query and returns results."""
         if not self.conn or not self.conn.is_connected():
-            logging.error("Database connection not established. Cannot query data.")
+            logging.error("Database connection not established.")
             return None
-        cursor = self.conn.cursor(dictionary=True) # Return results as dictionaries
+        cursor = self.conn.cursor(dictionary=True) 
         try:
             cursor.execute(sql_query, params)
             results = cursor.fetchall()
@@ -119,7 +119,7 @@ class MySQLHandler:
     def list_tables(self):
         """Lists all tables in the connected database."""
         if not self.conn or not self.conn.is_connected():
-            logging.error("Database connection not established. Cannot list tables.")
+            logging.error("Database connection not established.")
             return []
         cursor = self.conn.cursor()
         try:
@@ -134,13 +134,13 @@ class MySQLHandler:
                 cursor.close()
 
     def drop_tables(self):
-        """Drops all created tables (USE WITH CAUTION)."""
+        """Drops all created tables ."""
         if not self.conn or not self.conn.is_connected():
-            logging.error("Database connection not established. Cannot drop tables.")
+            logging.error("Database connection not established.")
             return False
         cursor = self.conn.cursor()
         try:
-            tables_to_drop = ['daily_cases', 'vaccination_data'] # Explicitly list tables to drop
+            tables_to_drop = ['daily_cases', 'vaccination_data'] 
             for table in tables_to_drop:
                 cursor.execute(f"DROP TABLE IF EXISTS {table}")
                 logging.info(f"Dropped table: {table}")
@@ -159,6 +159,6 @@ class MySQLHandler:
         """Closes the database connection."""
         if self.conn and self.conn.is_connected():
             self.conn.close()
-            logging.info("MySQL connection closed.")
+            logging.info("connection closed.")
 
 
