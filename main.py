@@ -63,7 +63,7 @@ class CLIManager:
 
     def _fetch_and_load_data(self, country, start_date, end_date):
         logging.info(f"Fetching data for {country} from {start_date or 'beginning'} to {end_date or 'now'}")
-        # If dates are omitted, let fetch_data handle None (interpreted as unbounded)
+        
         raw_data = self.api_client.fetch_data(country=country, start_date=start_date, end_date=end_date)
 
 
