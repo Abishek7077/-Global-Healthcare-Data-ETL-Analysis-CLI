@@ -122,12 +122,15 @@ python main.py drop_tables
 ## RESULTS
 
 #### Top country by total cases 
+
 ![Output1](images\output1.png)
 
 #### Top countries by vacination
+
 ![Output2](images\output2.png)
 
 #### Top countries by total Death
+
 ![Output3](images\output3.png)
 
 
