@@ -66,6 +66,23 @@ config.ini: Settings (DB credentials, etc.)
 sql/create_tables.sql: Table schemas
 requirements.txt, README.md, docs/
 
+## System Architecture
+
+![System Architecture](images\Sys_Architecture.png)
+
+### Architecture Explanation
+
+LI Interface (User Input): Main entry point where users enter commands to fetch data, update the database, or view reports.
+
+API Fetcher (OWID COVID-19 API): Retrieves live data from the public  API, handling HTTP requests, parsing, and validation.
+
+Database Module (MySQL Storage): Stores cleaned and structured data in MySQL for efficient querying, indexing, and long-term storage.
+
+Analytics Module (Data Processing & Trends): Processes stored data to generate trends, comparisons, and insights using queries and visualizations.
+
+Output (Reports, Charts, CLI Display): Delivers processed results as CLI text, tables.
+
+
 
 # Database Schema Description
 Table: daily_cases
@@ -132,6 +149,11 @@ python main.py drop_tables
 #### Top countries by total Death
 
 ![Output3](images\output3.png)
+
+# Conclusion
+
+This project successfully delivers a robust command-line tool for extracting, transforming, and loading global healthcare data into a MySQL database, enabling efficient and reproducible healthcare data analysis. Leveraging a trusted public dataset from public API it provides automated data processing and flexible querying capabilities via a user-friendly CLI. The modular design ensures maintainability and extensibility, making it a valuable resource for researchers and analysts. Future enhancements can further improve performance, usability, and analytical depth.
+
 
 
 
